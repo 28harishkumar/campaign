@@ -1,0 +1,15 @@
+flowchart TB
+    START([Start]) --> stage1[Generate Config]
+    stage1 --> stage1_validate[Validate Generated Config]
+    stage1_validate --> stage1_confirm[User confirmation for generated config, user can edit form/json]
+    stage1_confirm  --> state1_regen[Regenerate Config]
+    state1_regen --> stage1_validate
+    stage1_confirm --> ask_range[Ask for variable range & currency]
+    ask_range --> --> stage2[Generated Experiments]
+    stage2 --> state2_validate[Validate Generated Experiments]
+    state2_validate --> stage2_confirm[User confirmation for generated exeriments, user can edit form/json]
+    stage2_confirm --> state2_regen[Regenerate Experiments]
+    state2_regen --> state2_validate
+    stage2_confirm --> terminate[Terminate Experiment Generation]
+    analyse_experiment[Analyse Experiment] --> generate_insight[Generate insight]
+    generate_insight --> stage1_confirm

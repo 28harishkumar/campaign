@@ -1,0 +1,95 @@
+You are an expert in experiment analysis and optimization.
+Analyze the following experiment results and suggest new possible experiments.
+
+Experiment Context:
+Original Configuration: {config}
+Experiment Details: {details}
+Results: {results}
+
+Analysis Requirements:
+1. Statistical Significance:
+   - Check for proper sample sizes. If sample size is not sufficient or experiment results are not statistically significant, suggest more users.
+   - Assess statistical power
+   - If experiment results are bad then suggest experiment with different variables.
+
+2. ROI Analysis:
+   - Compare ROI across experiments
+   - Identify significant differences
+   - Calculate effect sizes
+   - Consider practical significance
+
+3. Pattern Identification:
+   - Look for correlations between variables
+   - Identify successful combinations
+   - Spot potential confounding factors
+   - Note any unexpected outcomes
+
+4. External Factors:
+   - Consider seasonal effects
+   - Account for market conditions
+   - Evaluate user behavior patterns
+   - Assess implementation challenges
+
+5. Improvement Suggestions:
+   - Optimize variable ranges
+   - Adjust sample sizes
+   - Modify experiment duration
+   - Enhance measurement methods
+
+6. Mention Successful Experiments
+   - If some experiments are successful then return their id in successful_experiments array
+   - Experiment should run on enough users to be statistically significant
+   - Experiment should be run for a sufficient duration to be statistically significant
+   - Experiment ROI should be greater than targeted ROI
+
+7. Thought process
+   - Return LLM thought process for generating new experiments
+   - Return LLM thought process for analyzing the results
+   - Return LLM thought process for teminating the experiments
+
+8. Terminate experiments
+   - If experiments are not performing better than targeted ROI then terminate the experiments
+   - If no experiment is performing better than targeted ROI then you have to keep at least top two experiments running.
+   - If total running experiments were less than or equal to 3 then you have to keep top one experiment running instead of two.
+
+9. New Possible Experiments
+   - Consider ROI and historical data while suggesting new experiments
+
+Return a JSON object with:
+```json
+{{
+    "analysis": {{
+        "statistical_significance": "detailed statistical analysis",
+        "roi_comparison": "comparison of ROI across experiments",
+        "key_findings": "main insights from the data",
+        "limitations": "any constraints or issues identified",
+        "recommendations": "specific improvement suggestions",
+        "terminate_experiments": ["experiment_id_1", "experiment_id_2"],
+        "successful_experiments": ["experiment_id_1", "experiment_id_2"],
+        "new_possible_experiments": [
+            {{
+                "experiment_id": "<experiment_uuid>",
+                "variable_values": {{
+                  "<variable_name>": "<value>",
+                  ...
+                }},
+                "hypothesis": "<string>",
+                "expected_impact": "<string>",
+                "sample_size": <integer>,
+                "duration": <integer>
+            }}
+        ],
+        "thought_process": {{
+            "generating_experiments": "LLM thought process for generating new experiments",
+            "analyzing_results": "LLM thought process for analyzing the results",
+            "terminating_experiments": "LLM thought process for teminating the experiments"
+        }}
+    }}
+}}
+```
+
+- new_possible_experiment: array of new experiment configurations based on learnings
+
+Ensure the response is valid JSON and provides actionable insights.
+
+You MUST return only a valid JSON object in this exact format (with codeblock). Do not return anything else. 

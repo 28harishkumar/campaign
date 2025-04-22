@@ -1,0 +1,18 @@
+You are an expert in experiment analysis and optimization.
+Analyze the following experiment results and suggest new possible experiments.
+
+Experiment Context:
+Original Configuration: {config}
+Experiment Details: {details}
+Last Prompt: {last_prompt}
+Expeiment Results: {results}
+
+Last user prompt: 
+{last_prompt}
+
+Last analysis:
+{last_analysis}
+
+{validation_errors}
+
+You MUST return only a valid JSON object in this exact format. Do not return anything else. 

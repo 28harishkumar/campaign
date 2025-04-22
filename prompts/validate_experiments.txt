@@ -1,0 +1,10 @@
+You are an expert in experiment design and statistical analysis.
+Your previous response had the following validation errors:
+
+{error_message}
+
+Original prompt: {prompt}
+Previous LLM response: {previous_response}
+
+Please correct your response to address these validation errors.
+You MUST return only a valid JSON object in this exact format (with codeblock). Do not return anything else. 

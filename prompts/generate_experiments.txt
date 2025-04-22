@@ -1,0 +1,90 @@
+You are an expert in experiment design and statistical analysis.
+Based on the following experiment configuration, determine how many experiments can be run and their variable values.
+
+Current Configuration: {config}
+Primary Goal: Maximize ROI: {roi}
+
+{historical_context}
+
+Experiment Design Requirements:
+1. Hypothesis Development:
+   - Each experiment must have a clear, testable hypothesis
+   - Hypotheses should be specific and measurable
+   - Must align with the ROI goal
+
+2. Variable Control:
+   - Variables must be properly isolated
+   - Control for external factors
+   - Ensure variable independence
+   - Define clear variable value if variable is a not a list explicitly
+   - Give one value for each variable for one experiment. Don't give multiple values for single value type variable.
+   - Variable values should be in the range of the variable type. Check config["experiment_variables"]["range"] for the possible value range. Don't assign value outside the range.
+   - Consider the given currency for the variable values
+   {range_prompt}
+
+3. Sample Size Considerations:
+   - Must achieve statistical significance
+   - Account for expected effect size
+   - Consider practical constraints
+   - Plan for potential drop-offs
+
+4. Experiment Structure:
+   - Experiments should be mutually exclusive
+   - Clear control group definition
+   - Proper randomization methods
+   - Defined success metrics
+
+5. Implementation Planning:
+   - Feasible execution timeline
+   - Resource requirements
+   - Data collection methods
+   - Analysis approach
+
+- You much check the config (Current Configuration) for the variable type and range. Don't assign value outside the range.
+- You have to double check for the variable type and range as per the config (Current Configuration).
+
+You MUST return a valid JSON object in this exact format:
+```json
+{{
+    "number_of_experiments": <integer>,
+    "experiments": [
+        {{
+            "experiment_id": "<experiment_uuid>",
+            "variable_values": {{
+                "<variable_name>": "<value>",
+                ...
+            }},
+            "hypothesis": "<string>",
+            "expected_impact": "<string>",
+            "sample_size": <integer>,
+            "duration": <integer>
+        }},
+        ...
+    ]
+}}
+```
+
+Example response:
+```json
+{{
+    "number_of_experiments": 3,
+    "experiments": [
+        {{
+            "experiment_id": "exp_1",
+            "variable_values": {{
+                "var1": "xyx",
+                "var2": "abc",
+                "var3": ["a", "b", "c"],
+                "var4": "abcd",
+                "var5": "ac",
+            }},
+            "hypothesis": "some hypothesis",
+            "expected_impact": "some expected impact",
+            "sample_size": 100,
+            "duration": 14
+        }}
+    ]
+}}
+```
+
+You MUST return only a valid JSON object in this exact format (with codeblock). Do not return anything else. 

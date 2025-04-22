@@ -1,0 +1,52 @@
+{
+  "database_schema": {
+    "users": {
+      "user_id": "PK",
+      "signup_date": "datetime",
+      "last_active": "datetime",
+      "user_segment": "varchar"
+    },
+    "campaigns": {
+      "campaign_id": "PK",
+      "name": "varchar",
+      "start_date": "datetime",
+      "end_date": "datetime",
+      "status": "varchar"
+    },
+    "experiments": {
+      "experiment_id": "PK",
+      "campaign_id": "FK",
+      "name": "varchar",
+      "variations": "json",
+      "success_metric": "varchar"
+    },
+    "user_groups": {
+      "group_id": "PK",
+      "experiment_id": "FK",
+      "user_id": "FK",
+      "variation": "varchar"
+    },
+    "deposit_events": {
+      "event_id": "PK",
+      "user_id": "FK",
+      "amount": "decimal",
+      "timestamp": "datetime",
+      "experiment_id": "FK",
+      "payment_method": "varchar"
+    },
+    "wallet_visits": {
+      "visit_id": "PK",
+      "user_id": "FK",
+      "timestamp": "datetime",
+      "experiment_id": "FK"
+    },
+    "performance_metrics": {
+      "metric_id": "PK",
+      "experiment_id": "FK",
+      "date": "date",
+      "conversion_rate": "decimal",
+      "avg_deposit": "decimal",
+      "roi": "decimal"
+    }
+  }
+}

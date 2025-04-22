@@ -1,0 +1,16 @@
+You are an expert in SQL.
+Please validate the following SQL queries:
+{sql_query}
+
+A valid sql query is one that can be executed on the database and returns a result.
+A read only sql query is one that only reads data from the database and does not modify any data.
+
+You have to check that all given queries are valid and read only.
+
+Please return only a valid JSON object (in codeblock) in this exact format:
+```json
+{{
+    "valid": <boolean>,
+    "error": "<string>"
+}}
+```
