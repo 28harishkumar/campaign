@@ -139,7 +139,7 @@ class CampaignGenerator(CampaignBase):
                     ] = input(f"Enter the number of values for {variable['name']}: ")
 
                 if variable.get("type") and (
-                    variable["type"] == "decimal" or variable["type"] == "integer"
+                    "decimal" in variable["type"] or "integer" in variable["type"]
                 ):
                     state["config"]["experiment_variables"][index]["format"] = input(
                         f"Enter the format for {variable['name']}: "

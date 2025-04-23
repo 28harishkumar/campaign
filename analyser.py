@@ -3,6 +3,7 @@ import re
 import sqlite3
 import random
 import os
+import uuid
 from datetime import datetime
 from typing import Dict
 from langchain_core.messages import HumanMessage, SystemMessage
@@ -24,6 +25,19 @@ class CampaignAnalyzer(CampaignBase):
         self.details = details
         self._load_prompts()
 
+    def _load_prompts(self):
+        """Load prompts from files"""
+        prompt_dir = os.path.join(os.path.dirname(__file__), "prompts")
+
+        with open(os.path.join(prompt_dir, "analyze_results.txt"), "r") as f:
+            self.analyze_results_prompt = f.read()
+
+        with open(os.path.join(prompt_dir, "validate_results.txt"), "r") as f:
+            self.validate_results_prompt = f.read()
+
+        with open(os.path.join(prompt_dir, "roi_calculation.txt"), "r") as f:
+            self.roi_calculation_prompt = f.read()
+
     def stage3_generate_results(self, state: CampaignState) -> CampaignState:
         """Stage 3: Generate experiment results"""
         print("Stage 3: Generate experiment results")
@@ -37,7 +51,7 @@ class CampaignAnalyzer(CampaignBase):
             )
 
         # Connect to SQLite database
-        conn = sqlite3.connect("campaign/experimentdb.db")
+        conn = sqlite3.connect(self.database_file)
         cursor = conn.cursor()
 
         # Generate 10 random events for each experiment
@@ -46,7 +60,7 @@ class CampaignAnalyzer(CampaignBase):
 
             # Generate 10 random users for this experiment
             for i in range(10):
-                user_id = int(datetime.now().timestamp())
+                user_id = str(uuid.uuid4())
 
                 # Insert user if not exists
                 cursor.execute(
@@ -104,30 +118,10 @@ class CampaignAnalyzer(CampaignBase):
                     query_results[query] = cursor.fetchall()
                 conn.close()
 
-                roi_calculation_system_prompt = """
-                You are a financial analyst. You are given a list of query results and a ROI calculation formula.
-                You have to calculate the ROI based on the query results and the formula.
-
-                Query results:
-                {query_results}
-
-                ROI calculation formula:
-                {state["config"]["roi_calculation"]}
-
-                Return the result in JSON format with the following keys:
-                - roi: float
-                - thought_process: string
-
-                Example:
-                ```json
-                {
-                    "roi": 1.23,
-                    "thought_process": "I calculated the ROI by dividing the first variable with the second variable."
-                }
-                ```
-
-                Please return only a valid JSON object (in codeblock) in the exact format.
-                """
+                roi_calculation_system_prompt = self.roi_calculation_prompt.format(
+                    query_results=query_results,
+                    roi_calculation=state["config"]["roi_calculation"],
+                )
 
                 # Execute the ROI calculation query
                 response = self.llm.invoke(
@@ -167,14 +161,6 @@ class CampaignAnalyzer(CampaignBase):
 
         print("Generated results:", json.dumps(results, indent=2))
         return state
-
-    def _load_prompts(self):
-        """Load prompts from files"""
-        prompt_dir = os.path.join(os.path.dirname(__file__), "prompts")
-        with open(os.path.join(prompt_dir, "analyze_results.txt"), "r") as f:
-            self.analyze_results_prompt = f.read()
-        with open(os.path.join(prompt_dir, "validate_results.txt"), "r") as f:
-            self.validate_results_prompt = f.read()
 
     def stage4_analyze_results(self, state: CampaignState) -> CampaignState:
         """Stage 4: Analyze experiment results"""

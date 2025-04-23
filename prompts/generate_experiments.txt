@@ -40,6 +40,9 @@ Experiment Design Requirements:
    - Data collection methods
    - Analysis approach
 
+6. Experiment ID (experiment_id)
+   - experiment id is an uuid
+
 - You much check the config (Current Configuration) for the variable type and range. Don't assign value outside the range.
 - You have to double check for the variable type and range as per the config (Current Configuration).
 
@@ -70,7 +73,7 @@ Example response:
     "number_of_experiments": 3,
     "experiments": [
         {{
-            "experiment_id": "exp_1",
+            "experiment_id": "298ab967-385e-4bb0-bd2b-6e8579e17ae1",
             "variable_values": {{
                 "var1": "xyx",
                 "var2": "abc",

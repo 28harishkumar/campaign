@@ -82,7 +82,7 @@ class CampaignBase:
         self.llm = self._initialize_llm()
         self.history_file = "campaign/experiment_history.json"
         self.database_schema_file = "campaign/database_schema.json"
-        self.database_file = "campaign/experimentdb.db"
+        self.database_file = "campaign/database.db"
         self.history = self._load_history().get("experiments", [])
 
     def extract_code_block(self, text):

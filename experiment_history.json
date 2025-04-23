@@ -1,3 +1,213 @@
 {
-  "experiments": []
+  "experiments": [
+    {
+      "experiment_id": "exp_deposit_incentive_001",
+      "variable_values": {
+        "minimum_deposit": 50000,
+        "reward_amount": 25000,
+        "default_payment_amount": 75000,
+        "suggested_amount_widgets": [
+          25000,
+          50000,
+          75000
+        ]
+      },
+      "hypothesis": "Lowering minimum deposit threshold with moderate reward will increase user deposit conversion rates",
+      "expected_impact": "15% increase in unique depositors",
+      "sample_size": 2500,
+      "duration": 30,
+      "roi": 54.99,
+      "timestamp": "2025-04-23T09:45:02.572311"
+    },
+    {
+      "experiment_id": "exp_deposit_strategy_002",
+      "variable_values": {
+        "minimum_deposit": 75000,
+        "reward_amount": 40000,
+        "default_payment_amount": 60000,
+        "suggested_amount_widgets": [
+          30000,
+          60000,
+          90000
+        ]
+      },
+      "hypothesis": "Higher default payment amount with proportional reward will drive larger initial deposits",
+      "expected_impact": "20% increase in total deposit volume",
+      "sample_size": 2500,
+      "duration": 30,
+      "roi": 31.9895,
+      "timestamp": "2025-04-23T09:45:06.260759"
+    },
+    {
+      "experiment_id": "exp_deposit_engagement_003",
+      "variable_values": {
+        "minimum_deposit": 25000,
+        "reward_amount": 15000,
+        "default_payment_amount": 50000,
+        "suggested_amount_widgets": [
+          20000,
+          40000,
+          60000
+        ]
+      },
+      "hypothesis": "Lower entry barriers combined with flexible suggested amounts will improve initial user engagement",
+      "expected_impact": "25% increase in wallet visitors converting to depositors",
+      "sample_size": 2500,
+      "duration": 30,
+      "roi": 0.0625,
+      "timestamp": "2025-04-23T09:45:10.351655"
+    },
+    {
+      "experiment_id": "exp_deposit_optimization_004",
+      "variable_values": {
+        "minimum_deposit": 60000,
+        "reward_amount": 30000,
+        "default_payment_amount": 90000,
+        "suggested_amount_widgets": [
+          40000,
+          70000,
+          100000
+        ]
+      },
+      "hypothesis": "Higher default and suggested amounts with moderate rewards will attract more committed users",
+      "expected_impact": "18% improvement in average deposit amount",
+      "sample_size": 2500,
+      "duration": 30,
+      "roi": 0.0294,
+      "timestamp": "2025-04-23T09:45:14.042272"
+    },
+    {
+      "experiment_id": "exp_deposit_strategy_005",
+      "variable_values": {
+        "minimum_deposit": 100000,
+        "reward_amount": 50000,
+        "default_payment_amount": 250000,
+        "suggested_amount_widgets": [
+          25000,
+          50000,
+          75000
+        ]
+      },
+      "hypothesis": "Increasing minimum deposit with a proportional reward will attract more committed users and improve overall deposit volume",
+      "expected_impact": "22% increase in total deposit value and user retention",
+      "sample_size": 2500,
+      "duration": 30,
+      "roi": 451198.41396204557,
+      "timestamp": "2025-04-23T11:24:51.141283"
+    },
+    {
+      "experiment_id": "exp_deposit_engagement_006",
+      "variable_values": {
+        "minimum_deposit": 75000,
+        "reward_amount": 35000,
+        "default_payment_amount": 200000,
+        "suggested_amount_widgets": [
+          20000,
+          45000,
+          70000
+        ]
+      },
+      "hypothesis": "Moderate minimum deposit with flexible suggested amounts will improve user conversion and initial engagement",
+      "expected_impact": "18% increase in unique depositors",
+      "sample_size": 2500,
+      "duration": 30,
+      "roi": 427279.65546121437,
+      "timestamp": "2025-04-23T11:24:54.762632"
+    },
+    {
+      "experiment_id": "exp_deposit_optimization_007",
+      "variable_values": {
+        "minimum_deposit": 150000,
+        "reward_amount": 75000,
+        "default_payment_amount": 350000,
+        "suggested_amount_widgets": [
+          40000,
+          75000,
+          100000
+        ]
+      },
+      "hypothesis": "Higher default and suggested amounts with substantial rewards will attract high-value users",
+      "expected_impact": "25% improvement in average deposit amount",
+      "sample_size": 2500,
+      "duration": 30,
+      "roi": 381339.8778339182,
+      "timestamp": "2025-04-23T11:24:59.475160"
+    },
+    {
+      "experiment_id": "exp_deposit_conversion_008",
+      "variable_values": {
+        "minimum_deposit": 50000,
+        "reward_amount": 25000,
+        "default_payment_amount": 150000,
+        "suggested_amount_widgets": [
+          15000,
+          35000,
+          55000
+        ]
+      },
+      "hypothesis": "Lower entry barriers with modest rewards will increase overall user participation and deposit frequency",
+      "expected_impact": "20% increase in wallet visitors converting to depositors",
+      "sample_size": 2500,
+      "duration": 30,
+      "roi": 437983.39373160613,
+      "timestamp": "2025-04-23T11:25:02.748881"
+    },
+    {
+      "experiment_id": "f3a4e7c1-9b2d-4f5e-a3c6-d8b0e1f2a3b4",
+      "variable_values": {
+        "minimum_deposit": 25000,
+        "reward_amount": 15000,
+        "default_payment_amount": 50000,
+        "suggested_amount_widgets": [
+          20000,
+          40000,
+          60000
+        ]
+      },
+      "hypothesis": "Lowering minimum deposit threshold with targeted reward widgets will increase user deposit conversion rates by reducing initial engagement barriers",
+      "expected_impact": "18% increase in unique wallet depositors",
+      "sample_size": 2000,
+      "duration": 30,
+      "roi": 32347.75,
+      "timestamp": "2025-04-23T12:25:25.860977"
+    },
+    {
+      "experiment_id": "a7c2e5b9-3d1f-4e6a-b8d0-f1c4a2e3b5d7",
+      "variable_values": {
+        "minimum_deposit": 40000,
+        "reward_amount": 20000,
+        "default_payment_amount": 75000,
+        "suggested_amount_widgets": [
+          30000,
+          55000,
+          80000
+        ]
+      },
+      "hypothesis": "Moderate minimum deposit with proportional rewards and strategic suggested amounts will optimize user deposit behavior",
+      "expected_impact": "22% improvement in average deposit volume",
+      "sample_size": 2000,
+      "duration": 30,
+      "roi": 63666.40487129134,
+      "timestamp": "2025-04-23T12:25:33.474705"
+    },
+    {
+      "experiment_id": "c5d8e1b3-6f2a-4d9e-b1c7-a3f0e2d4b6c8",
+      "variable_values": {
+        "minimum_deposit": 35000,
+        "reward_amount": 12000,
+        "default_payment_amount": 60000,
+        "suggested_amount_widgets": [
+          25000,
+          45000,
+          70000
+        ]
+      },
+      "hypothesis": "Balanced deposit parameters with flexible suggestion widgets will enhance user engagement and deposit likelihood",
+      "expected_impact": "15% increase in total deposit conversions",
+      "sample_size": 2000,
+      "duration": 30,
+      "roi": 53396.59,
+      "timestamp": "2025-04-23T12:25:39.327801"
+    }
+  ]
 }

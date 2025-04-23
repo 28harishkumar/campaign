@@ -61,10 +61,13 @@ Configuration Requirements:
    - sql query should be python formatted with experiment_id as a positional parameter, so this should be a valid python formatted string and take experiment_id as a parameter
    - Note that you don't have to concat tables. Fetch the relevand data only. ROI will be calculated later based on the data.
    - experiment_id should be quoted properly.
+   - Don't make assumptions unless it is mentioned explicitly.
+   - Aggregate or Annotate only if this is asked explicitly. Don't force DISTINCT if this is not required
+   - Each query must be independent of other tables. Don't use join operations for inside database arthmatic operations.
 
 10. ROI calcualtion (roi_calculation)
    - SQL given in the 9th point will be executed and data will be sent to the LLM along with ROI calcualtion formula
-   - You have to give formula for calculating ROI. This will be sent to LLM
+   - You have to generate formula for calculating ROI and write js code. js code will be returned in `roi_calculation` variable. This code will be send back to the LLM for calculating ROI by executing the code.
    
 Additional Considerations:
 1. Ensure statistical significance in sample size
